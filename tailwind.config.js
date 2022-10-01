@@ -31,7 +31,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        'terra-o': ['Sora', 'sans-serif']
+        'terra-o': ['Sora', 'sans-serif'],
+        o: ['Sorts Mill Goudy', 'serif']
       }
     }
   },

@@ -2,5 +2,8 @@
 
 module.exports = {
   reactStrictMode: false,
-  swcMinify: true
+  swcMinify: true,
+  images: {
+    domains: ['appliedsciences.nasa.gov'],
+  },
 }

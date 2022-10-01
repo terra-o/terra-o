@@ -1,5 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
+import TerraO from '@/public/images/terra-o.png'
+
 export default function Document() {
   return (
     <Html>
@@ -9,6 +11,24 @@ export default function Document() {
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Sora&display=swap"
           rel="stylesheet"
+        />
+
+        <link rel="icon" href="/images/o.png" type="image/png" />
+
+        <meta name="robots" content="follow, index" />
+
+        <meta property="og:site_name" content="Terra O" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="image"
+          property="og:image"
+          content="https://terra-o.vercel.app/images/terra-o.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://terra-o.vercel.app/images/terra-o.png"
         />
       </Head>
       <body>
