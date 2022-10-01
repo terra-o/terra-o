@@ -1,0 +1,10 @@
+build
+coverage
+node_modules
+out
+.next
+.vercel
+
+yarn-debug.log*
+yarn-error.log*
+.env*.local
