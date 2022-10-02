@@ -18,7 +18,7 @@ export default function QuickStart() {
                 title={
                   'ARSET - Accessing and Analyzing Air Quality Data from Geostationary Satellites'
                 }
-                link={
+                url={
                   'https://appliedsciences.nasa.gov/join-mission/training/english/arset-accessing-and-analyzing-air-quality-data-geostationary'
                 }
                 imageUrl={
