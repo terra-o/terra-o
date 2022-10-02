@@ -9,7 +9,7 @@ export default function Index() {
   const { width, height } = useWindowDimensions()
 
   return (
-    <Page className="bg-terra-o-white dark:bg-terra-o-black min-h-screen">
+    <Page className="bg-terra-o-white dark:bg-terra-o-black min-h-screen overflow-hidden">
       <section className="flex items-center justify-around">
         <div className="hidden xl:block max-h-[88vh] w-[44vw]">
           {width && height && (
