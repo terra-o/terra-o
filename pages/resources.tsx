@@ -32,7 +32,7 @@ export default function Resources() {
       icon: Agriculture
     },
     {
-      title: 'Capacity Building',
+      title: 'Capacity building',
       icon: CapacityBuilding
     },
     {
@@ -40,7 +40,7 @@ export default function Resources() {
       icon: Disasters
     },
     {
-      title: 'Health & Air Quality',
+      title: 'Health & air quality',
       icon: HealthAirQuality
     },
     {
@@ -48,11 +48,11 @@ export default function Resources() {
       icon: Wildfires
     },
     {
-      title: 'Water Resources',
+      title: 'Water resources',
       icon: WaterResources
     },
     {
-      title: 'Ecological Forecasting',
+      title: 'Ecological forecasting',
       icon: EcologicalForecasting
     }
   ]
