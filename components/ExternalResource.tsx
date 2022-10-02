@@ -4,13 +4,13 @@ import { ArrowUpRight } from './icons/ArrowUpRight'
 
 type ExternalResourceProps = {
   title: string
-  link: string
+  url: string
   imageUrl: string
 }
 
 export default function ExternalResource({
   title,
-  link,
+  url,
   imageUrl
 }: ExternalResourceProps) {
   return (
@@ -25,8 +25,10 @@ export default function ExternalResource({
         />
       </div>
 
-      <Link href={link} className="flex flex-row gap-2">
-        <a className="underline">{title}</a>
+      <Link href={url} className="flex flex-row gap-2">
+        <a target="_blank" rel="noopener noreferrer" className="underline">
+          {title}
+        </a>
       </Link>
       <ArrowUpRight />
     </div>

@@ -1,7 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-import TerraO from '@/public/images/terra-o.png'
-
 export default function Document() {
   return (
     <Html>

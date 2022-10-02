@@ -8,6 +8,7 @@ type PageProps = {
   title?: string
   description?: string
   className?: string
+  theme?: 'light' | 'dark'
   children: ReactNode
 }
 
@@ -15,6 +16,7 @@ export default function Page({
   title,
   description,
   className,
+  theme,
   children
 }: PageProps) {
   title = title
@@ -22,7 +24,7 @@ export default function Page({
     : 'Terra O | Your gateway to acknowledge Earth'
   description =
     description ||
-    'Terra O is a gateway that provides capacity building resources to Earth Observation.'
+    'Terra O is a gateway that provides capacity building resources to Earth ObservationS.'
 
   const { asPath: uri } = useRouter()
 
@@ -44,7 +46,7 @@ export default function Page({
         <meta name="twitter:description" content={description} />
       </Head>
       <div className={className}>
-        <Header />
+        <Header theme={theme} />
         <main>{children}</main>
       </div>
     </>

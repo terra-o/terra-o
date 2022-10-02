@@ -1,3 +1,4 @@
+import { useTheme } from 'next-themes'
 import Image from 'next/image'
 
 import Page from '@/components/layout/Page'
@@ -12,8 +13,13 @@ import WaterResources from '@/public/icons/water-resources.png'
 import EcologicalForecasting from '@/public/icons/ecological-forecasting.png'
 
 export default function CustomResources() {
+  const { theme } = useTheme()
+
   return (
-    <Page className="bg-terra-o-black dark:bg-terra-o-white min-h-screen">
+    <Page
+      theme={theme === 'dark' ? 'light' : 'dark'}
+      className="bg-terra-o-black dark:bg-terra-o-white min-h-screen"
+    >
       <section className="flex flex-col items-center text-terra-o-white dark:text-terra-o-black">
         <div className="my-28 flex flex-col justify-center items-center gap-y-10">
           <h2 className="text-center font-sans font-semibold text-2xl lg:text-5xl 2xl:text-6xl ">

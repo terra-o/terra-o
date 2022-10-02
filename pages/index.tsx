@@ -33,7 +33,7 @@ export default function Index() {
         </div>
         <div className="relative w-screen md:w-[36vw] flex items-start flex-col gap-y-6 justify-start h-[88vh]">
           <div className="text-left max-w-[70%] font-sans dark:text-terra-o-white text-terra-o-black flex gap-y-6 flex-col">
-            <h2 className="dark:text-terra-o-white text-terra-o-black text-3xl md:text-4xl xl:text-6xl">
+            <h2 className="dark:text-terra-o-white text-terra-o-terra text-3xl md:text-4xl xl:text-6xl">
               Your gateway to acknowledge{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300 font-sans">
                 Earth.
@@ -43,7 +43,7 @@ export default function Index() {
               Terra O is a gateway that provides capacity building resources to
               Earth Observations.
             </h2>
-            <p className="text-lg md:text-xl xl:text-2xl dark:text-terra-o-gray-300 text-terra-o-gray-200">
+            <p className="text-lg md:text-xl xl:text-2xl text-terra-o-gray-300 terra-o-gray-300">
               Intended and specifically built to help policymakers all around
               the world use Earth data to base decisions in order to address
               natural disasters, land management issues, the impacts of climate
