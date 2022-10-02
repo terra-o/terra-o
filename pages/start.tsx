@@ -1,5 +1,5 @@
 import Page from '@/components/layout/Page'
-import ExternalResource from '@/components/ExternalResource'
+import ExternalResource from '@/components/resources/ExternalResource'
 
 export default function Start() {
   const resources = [

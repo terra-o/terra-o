@@ -1,13 +1,18 @@
 import { ReactNode } from 'react'
 
-type TopicProps = {
+type ResourcesFormTopicProps = {
   children: ReactNode
   title: string
   topics: string[]
   setTopics: (topics: string[]) => void
 }
 
-export function Topic({ children, title, topics, setTopics }: TopicProps) {
+export default function ResourcesFormTopic({
+  children,
+  title,
+  topics,
+  setTopics
+}: ResourcesFormTopicProps) {
   function toggleTopic() {
     if (topics.includes(title)) {
       setTopics(topics.filter((topic) => topic !== title))
