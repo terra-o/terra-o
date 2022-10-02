@@ -15,7 +15,7 @@ export default function NotFound() {
           <h1 className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-100 to-terra-o-green-200">
             404
           </h1>
-          <p className="text-xl dark:text-terra-o-gray-200 px-4 text-center">
+          <p className="text-xl dark:text-terra-o-gray-200 text-terra-o-gray-400 px-4 text-center">
             It seems like you are scaping to low orbit.
           </p>
           <Link href="/">
