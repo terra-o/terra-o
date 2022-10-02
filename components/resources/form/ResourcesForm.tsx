@@ -62,6 +62,8 @@ export default function ResourcesForm() {
 
   const [resourcesTopics, setResourcesTopics] = useState<string[]>([])
   const [where, setWhere] = useState('online')
+  const [difficulty, setDifficulty] = useState('intermediate')
+  const [language, setLanguage] = useState('english')
 
   function getResources(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -69,7 +71,9 @@ export default function ResourcesForm() {
     if (
       resourcesTypes.length === 0 ||
       resourcesTopics.length === 0 ||
-      (resourcesTypes.includes('training') && where === '')
+      (resourcesTypes.includes('training') && where === '') ||
+      (resourcesTypes.includes('training') && difficulty === '') ||
+      language === ''
     ) {
       toast('Select all required fields', {
         style: {
@@ -89,7 +93,7 @@ export default function ResourcesForm() {
         .map((topics) => topics.toLowerCase())
         .join(',')}${
         resourcesTypes.includes('trainings') ? '&where=' + where : ''
-      }`
+      }&difficulty=${difficulty}&language=${language}`
     }
   }
 
@@ -125,21 +129,21 @@ export default function ResourcesForm() {
               <div className="text-center">
                 <label
                   htmlFor="resourcesTypes"
-                  className="dark:text-terra-o-gray-400"
+                  className="dark:text-terra-o-black"
                 >
                   Which types of resources are you looking for?{' '}
                   <span className="text-red-500">*</span>
                 </label>
-                <div className="flex mt-2 flex-col sm:flex-row items-center gap-4">
+                <div className="flex mt-2 flex-col sm:flex-row items-center justify-center gap-4">
                   <div
-                    onClick={() => toggleResourceTypes('articles')}
+                    onClick={() => toggleResourceTypes('entries')}
                     className={
                       'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
-                      (resourcesTypes.includes('articles') &&
+                      (resourcesTypes.includes('entries') &&
                         'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
                     }
                   >
-                    <p>Articles</p>
+                    <p>Entries</p>
                   </div>
                   <div
                     onClick={() => toggleResourceTypes('trainings')}
@@ -151,22 +155,45 @@ export default function ResourcesForm() {
                   >
                     <p>Trainings</p>
                   </div>
-                  <div
-                    onClick={() => toggleResourceTypes('datasets')}
-                    className={
-                      'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
-                      (resourcesTypes.includes('datasets') &&
-                        'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
-                    }
-                  >
-                    <p>Datasets</p>
-                  </div>
                 </div>
               </div>
-              <div className="flex flex-col mt-4 items-center">
+              {resourcesTypes.includes('trainings') && (
+                <div className="flex flex-col mt-6 items-center gap-2">
+                  <label
+                    htmlFor="where"
+                    className="dark:text-terra-o-black text-center"
+                  >
+                    Where would you like the trainings to take place?{' '}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
+                    <div
+                      onClick={() => setWhere('online')}
+                      className={
+                        'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                        (where === 'online' &&
+                          'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                      }
+                    >
+                      <p>Online</p>
+                    </div>
+                    <div
+                      onClick={() => setWhere('in-person')}
+                      className={
+                        'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                        (where === 'in-person' &&
+                          'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                      }
+                    >
+                      <p>In person</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className="flex flex-col mt-8 items-center">
                 <label
                   htmlFor="topics"
-                  className="dark:text-terra-o-gray-400 text-center"
+                  className="dark:text-terra-o-black text-center"
                 >
                   Which topics can EO help you with?{' '}
                   <span className="text-red-500">*</span>
@@ -185,41 +212,90 @@ export default function ResourcesForm() {
                 </div>
               </div>
             </div>
-            {resourcesTypes.includes('trainings') && (
-              <div className="flex flex-col -mt-14 items-center gap-2">
-                <label
-                  htmlFor="where"
-                  className="dark:text-terra-o-gray-400 text-center"
+            <div className="flex flex-col -mt-8 items-center gap-2">
+              <label
+                htmlFor="where"
+                className="dark:text-terra-o-black text-center"
+              >
+                Which difficulty level the resources should have?{' '}
+                <span className="text-red-500">*</span>
+              </label>
+              <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
+                <div
+                  onClick={() => setDifficulty('introductory')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (difficulty === 'introductory' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
                 >
-                  Where would you like the trainings to take place?{' '}
-                  <span className="text-red-500">*</span>
-                </label>
-                <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
-                  <div
-                    onClick={() => setWhere('online')}
-                    className={
-                      'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
-                      (where === 'online' &&
-                        'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
-                    }
-                  >
-                    <p>Online</p>
-                  </div>
-                  <div
-                    onClick={() => setWhere('in-person')}
-                    className={
-                      'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
-                      (where === 'in-person' &&
-                        'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
-                    }
-                  >
-                    <p>In person</p>
-                  </div>
+                  <p>Introductory</p>
+                </div>
+                <div
+                  onClick={() => setDifficulty('intermediate')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (difficulty === 'intermediate' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
+                >
+                  <p>Intermediate</p>
+                </div>
+                <div
+                  onClick={() => setDifficulty('advanced')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (difficulty === 'advanced' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
+                >
+                  <p>Advanced</p>
                 </div>
               </div>
-            )}
-            <p className="text-terra-o-gray-200 -mt-16">
-              Fields width <span className="text-red-500">*</span> are required.
+            </div>
+            <div className="flex flex-col -mt-8 items-center gap-2">
+              <label
+                htmlFor="where"
+                className="dark:text-terra-o-black text-center"
+              >
+                Which language the resources should be in?{' '}
+                <span className="text-red-500">*</span>
+              </label>
+              <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
+                <div
+                  onClick={() => setLanguage('english')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (language === 'english' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
+                >
+                  <p>English</p>
+                </div>
+                <div
+                  onClick={() => setLanguage('french')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (language === 'french' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
+                >
+                  <p>French</p>
+                </div>
+                <div
+                  onClick={() => setLanguage('spanish')}
+                  className={
+                    'border-2 cursor-pointer dark:hover:text-terra-o-white dark:hover:bg-terra-o-black border-terra-o-white dark:border-terra-o-black transition-colors duration-100 hover:bg-terra-o-white hover:text-terra-o-black flex items-center justify-center gap-2 px-8 min-w-[60%] sm:min-w-[140px] py-3 ' +
+                    (language === 'spanish' &&
+                      'bg-terra-o-white text-terra-o-black dark:bg-terra-o-black dark:text-terra-o-white')
+                  }
+                >
+                  <p>Spanish</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-terra-o-gray-200 dark:text-terra-o-gray-400 -mt-14">
+              Fields with <span className="text-red-500">*</span> are required
             </p>
             <button
               type="submit"

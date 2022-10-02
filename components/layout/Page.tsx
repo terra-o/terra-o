@@ -8,6 +8,7 @@ type PageProps = {
   title?: string
   description?: string
   className?: string
+  header?: boolean
   theme?: 'light' | 'dark'
   children: ReactNode
 }
@@ -17,6 +18,7 @@ export default function Page({
   description,
   className,
   theme,
+  header = true,
   children
 }: PageProps) {
   title = title
@@ -46,7 +48,7 @@ export default function Page({
         <meta name="twitter:description" content={description} />
       </Head>
       <div className={'transition-colors duration-500 ' + className}>
-        <Header theme={theme} />
+        {header && <Header theme={theme} />}
         <main>{children}</main>
       </div>
     </>

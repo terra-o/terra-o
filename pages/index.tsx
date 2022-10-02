@@ -33,17 +33,17 @@ export default function Index() {
         </div>
         <div className="relative w-screen md:w-[36vw] flex items-start flex-col gap-y-8 justify-start h-[88vh]">
           <div className="sm:m-0 mt-6 text-left w-full px-8 sm:p-0 sm:max-w-[70%] font-sans dark:text-terra-o-white text-terra-o-black flex gap-y-6 flex-col">
-            <h2 className="dark:text-terra-o-white text-terra-o-terra text-3xl md:text-4xl xl:text-6xl">
+            <h2 className="dark:text-terra-o-white text-terra-o-terra text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl">
               Your gateway to acknowledge{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300 font-sans">
                 Earth.
               </span>
             </h2>
-            <h2 className="dark:text-terra-o-gray-200 text-terra-o-gray-400 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+            <h2 className="dark:text-terra-o-gray-200 text-terra-o-gray-400 text-2xl xl:text-3xl 2xl:text-5xl">
               Terra O is a gateway that provides capacity building resources to
               Earth Observations.
             </h2>
-            <p className="text-lg md:text-xl xl:text-2xl text-terra-o-gray-300">
+            <p className="text-lg md:text-xl xl:text-sm 2xl:text-2xl text-terra-o-gray-300">
               Intended and specifically built to help policymakers all around
               the world use Earth data to better base decisions in order to
               address natural disasters, land management issues, the impacts of
