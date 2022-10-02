@@ -31,8 +31,8 @@ export default function Index() {
             </Link>
           )}
         </div>
-        <div className="relative w-screen md:w-[36vw] flex items-start flex-col gap-y-6 justify-start h-[88vh]">
-          <div className="text-left max-w-[70%] font-sans dark:text-terra-o-white text-terra-o-black flex gap-y-6 flex-col">
+        <div className="relative w-screen md:w-[36vw] flex items-start flex-col gap-y-8 justify-start h-[88vh]">
+          <div className="sm:m-0 mt-6 text-left w-full px-8 sm:p-0 sm:max-w-[70%] font-sans dark:text-terra-o-white text-terra-o-black flex gap-y-6 flex-col">
             <h2 className="dark:text-terra-o-white text-terra-o-terra text-3xl md:text-4xl xl:text-6xl">
               Your gateway to acknowledge{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300 font-sans">
@@ -45,20 +45,20 @@ export default function Index() {
             </h2>
             <p className="text-lg md:text-xl xl:text-2xl text-terra-o-gray-300 terra-o-gray-300">
               Intended and specifically built to help policymakers all around
-              the world use Earth data to base decisions in order to address
-              natural disasters, land management issues, the impacts of climate
-              change, and other environmental issues.
+              the world use Earth data to better base decisions in order to
+              address natural disasters, land management issues, the impacts of
+              climate change, and other environmental issues.
             </p>
           </div>
-          <div className="flex gap-x-6 absolute bottom-0">
-            <Link href="/quick-start">
-              <a className="px-6 py-4 border-2 font-sans border-terra-o-black dark:text-terra-o-white dark:hover:text-terra-o-black hover:text-terra-o-white text-terra-o-black hover:bg-terra-o-black dark:border-terra-o-white dark:hover:bg-terra-o-white transition-colors duration-100">
-                Quick start
+          <div className="flex flex-col items-start font-sans sm:p-0 gap-y-8 pl-8 text-lg sm:flex-row sm:gap-x-6">
+            <Link href="/start">
+              <a className="px-6 py-4 border-2 border-terra-o-black dark:text-terra-o-white bg-terra-o-white dark:bg-terra-o-black dark:hover:text-terra-o-black hover:text-terra-o-white text-terra-o-black hover:bg-terra-o-black dark:border-terra-o-white dark:hover:bg-terra-o-white transition-colors duration-100">
+                Get started
               </a>
             </Link>
-            <Link href="/custom-resources">
-              <a className="px-6 py-4 border-2 font-sans border-terra-o-black dark:bg-terra-o-white dark:text-terra-o-black dark:hover:text-terra-o-white bg-terra-o-black hover:text-terra-o-black text-terra-o-white hover:bg-terra-o-white dark:border-terra-o-white dark:hover:bg-terra-o-black transition-colors duration-100">
-                Custom resources
+            <Link href="/resources">
+              <a className="px-6 py-4 border-2 border-terra-o-black dark:bg-terra-o-white dark:text-terra-o-black dark:hover:text-terra-o-white bg-terra-o-black hover:text-terra-o-black text-terra-o-white hover:bg-terra-o-white dark:border-terra-o-white dark:hover:bg-terra-o-black transition-colors duration-100">
+                Resources
               </a>
             </Link>
           </div>
