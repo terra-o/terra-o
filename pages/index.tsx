@@ -41,7 +41,7 @@ export default function Index() {
             </h2>
             <h2 className="dark:text-terra-o-gray-200 text-terra-o-gray-300 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
               Terra O is a gateway that provides capacity building resources to
-              Earth Observation.
+              Earth Observations.
             </h2>
             <p className="text-lg md:text-xl xl:text-2xl dark:text-terra-o-gray-300 text-terra-o-gray-200">
               Intended and specifically built to help policymakers all around
