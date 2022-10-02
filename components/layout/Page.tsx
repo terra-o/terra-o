@@ -45,7 +45,7 @@ export default function Page({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
       </Head>
-      <div className={className}>
+      <div className={'transition-colors duration-500 ' + className}>
         <Header theme={theme} />
         <main>{children}</main>
       </div>
