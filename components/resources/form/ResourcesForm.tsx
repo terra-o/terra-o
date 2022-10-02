@@ -77,12 +77,19 @@ export default function ResourcesForm() {
           borderRadius: '0px',
           backgroundColor: theme === 'dark' ? '#090909' : '#f8f8f8',
           padding: '12px',
-          color: theme === 'dark' ? '#f8f8f8' : '#090909'
+          color: theme === 'dark' ? '#f8f8f8' : '#090909',
+          marginTop: '72px'
         },
-        position: 'bottom-left'
+        position: 'top-center'
       })
     } else {
-      console.log('asd')
+      location.href = `/resources?types=${resourcesTypes.join(
+        ','
+      )}&topics=${resourcesTopics
+        .map((topics) => topics.toLowerCase())
+        .join(',')}${
+        resourcesTypes.includes('trainings') ? '&where=' + where : ''
+      }`
     }
   }
 
@@ -120,7 +127,8 @@ export default function ResourcesForm() {
                   htmlFor="resourcesTypes"
                   className="dark:text-terra-o-gray-400"
                 >
-                  Which type of resources are you looking for?
+                  Which types of resources are you looking for?{' '}
+                  <span className="text-red-500">*</span>
                 </label>
                 <div className="flex mt-2 flex-col sm:flex-row items-center gap-4">
                   <div
@@ -160,7 +168,8 @@ export default function ResourcesForm() {
                   htmlFor="topics"
                   className="dark:text-terra-o-gray-400 text-center"
                 >
-                  Which topics can EO help you with?
+                  Which topics can EO help you with?{' '}
+                  <span className="text-red-500">*</span>
                 </label>
                 <div className="grid mt-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {topics.map(({ title, icon }) => (
@@ -182,7 +191,8 @@ export default function ResourcesForm() {
                   htmlFor="where"
                   className="dark:text-terra-o-gray-400 text-center"
                 >
-                  Where would you like the trainings to take place?
+                  Where would you like the trainings to take place?{' '}
+                  <span className="text-red-500">*</span>
                 </label>
                 <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
                   <div

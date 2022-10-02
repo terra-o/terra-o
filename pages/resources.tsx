@@ -1,12 +1,25 @@
-import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next'
+import { ParsedUrlQuery } from 'querystring'
 
 import ResourcesForm from '@/components/resources/form/ResourcesForm'
 import ResourcesPage from '@/components/resources/page/ResourcesPage'
 
-export default function Resources() {
-  const { query } = useRouter()
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {
+      query: context.query
+    }
+  }
+}
 
-  if (query.params?.length === 0) return <ResourcesForm />
+type ResourcesProps = {
+  query: ParsedUrlQuery
+}
 
-  return <ResourcesPage />
+export default function Resources({
+  query: { types, topics, where }
+}: ResourcesProps) {
+  if (!types && !topics && !where) return <ResourcesForm />
+
+  return <ResourcesPage types={types!!} topics={topics!!} where={where!!} />
 }

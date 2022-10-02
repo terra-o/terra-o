@@ -12,10 +12,6 @@ type HeaderProps = {
 export default function Header({ theme }: HeaderProps) {
   const { theme: t, setTheme: setT } = useTheme()
 
-  useEffect(() => {
-    console.log(theme)
-  }, [theme])
-
   return (
     <header className="h-[7.5vh] sticky top-0 bg-transparent backdrop-blur backdrop-filter flex items-center justify-center">
       <nav className="flex w-[90vw] items-center justify-between">
@@ -37,13 +33,13 @@ export default function Header({ theme }: HeaderProps) {
         <a
           onClick={() => setT(t === 'dark' ? 'light' : 'dark')}
           className={
-            'cursor-pointer min-w-18 text-sans border-2 transition-colors duration-100  ' +
+            'cursor-pointer max-w-18 min-w-18 text-sans border-2 transition-colors duration-100  ' +
             (theme
               ? 'dark:text-terra-o-black text-terra-o-white hover:bg-terra-o-white hover:text-terra-o-black dark:border-terra-o-black dark:hover:text-terra-o-white dark:hover:bg-terra-o-black'
               : 'dark:hover:bg-terra-o-white dark:hover:text-terra-o-black hover:bg-terra-o-black hover:text-terra-o-white dark:border-terra-o-white border-terra-o-black')
           }
         >
-          <h3 className="text-md px-4 py-1">
+          <h3 className="text-md w-16 h-8 flex items-center justify-center">
             {theme
               ? t === 'dark'
                 ? 'Dark'

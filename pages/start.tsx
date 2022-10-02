@@ -28,7 +28,7 @@ export default function Start() {
           <h2 className="text-center font-sans font-semibold text-2xl lg:text-5xl 2xl:text-6xl ">
             Start your learning journey in
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300 ">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300">
               Earth Observations
             </span>{' '}
             - EO
@@ -40,7 +40,7 @@ export default function Start() {
           </p>
         </div>
         <article className="flex mx-6 items-start justify-center flex-col">
-          <p>Recommended Courses </p>
+          <p>Recommended resources</p>
 
           <div className="flex items-center justify-center sm:flex-row flex-col gap-2">
             {resources.map(({ title, url, image }) => (
