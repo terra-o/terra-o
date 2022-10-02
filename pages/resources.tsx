@@ -126,8 +126,11 @@ export default function Resources() {
               </div>
             </div>
             <div className="flex flex-col mt-4 items-center">
-              <label htmlFor="topics" className="dark:text-terra-o-gray-400">
-                Topics
+              <label
+                htmlFor="topics"
+                className="dark:text-terra-o-gray-400 text-center"
+              >
+                What topics can EO help you with?
               </label>
               <div className="grid mt-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {topics.map(({ title, icon }) => (
@@ -145,7 +148,10 @@ export default function Resources() {
           </div>
           {type.includes('trainings') && (
             <div className="flex flex-col -mt-14 items-center gap-2">
-              <label htmlFor="where" className="dark:text-terra-o-gray-400">
+              <label
+                htmlFor="where"
+                className="dark:text-terra-o-gray-400 text-center"
+              >
                 Where would you like the training to take place?
               </label>
               <div className="flex sm:flex-row mt-2 flex-col gap-4 ">
