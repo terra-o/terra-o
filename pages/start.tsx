@@ -33,7 +33,7 @@ export default function Start() {
             </span>{' '}
             - EO
           </h2>
-          <p className="text-terra-o-white dark:text-terra-o-gray-300 w-2/3 text-center">
+          <p className="text-terra-o-gray-300 w-2/3 text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia
             magna urna facilisi lacus. Sodales sed elementum nunc sit viverra
             diam est.

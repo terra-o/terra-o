@@ -218,9 +218,12 @@ export default function ResourcesForm() {
                 </div>
               </div>
             )}
+            <p className="text-terra-o-gray-200 -mt-16">
+              Fields width <span className="text-red-500">*</span> are required.
+            </p>
             <button
               type="submit"
-              className="px-6 min-w-[140px] py-3 border-2 -mt-10 mb-10 font-sans border-terra-o-white dark:text-terra-o-black dark:hover:text-terra-o-white hover:text-terra-o-black text-terra-o-white hover:bg-terra-o-dark dark:border-terra-o-black hover:bg-terra-o-white dark:hover:bg-terra-o-black transition-colors duration-100"
+              className="px-6 min-w-[140px] py-3 border-2 -mt-14 mb-10 font-sans border-terra-o-white dark:text-terra-o-black dark:hover:text-terra-o-white hover:text-terra-o-black text-terra-o-white hover:bg-terra-o-dark dark:border-terra-o-black hover:bg-terra-o-white dark:hover:bg-terra-o-black transition-colors duration-100"
             >
               Get resources
             </button>
