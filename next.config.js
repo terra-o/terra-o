@@ -7,7 +7,8 @@ module.exports = {
     domains: [
       'appliedsciences.nasa.gov',
       'business.esa.int',
-      'eo4society.esa.int'
+      'eo4society.esa.int',
+      'www.nrcan.gc.ca'
     ]
   }
 }

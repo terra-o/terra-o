@@ -2,6 +2,7 @@
 import Page from '@/components/layout/Page'
 import ExternalResource from '@/components/resources/ExternalResource'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Start() {
   const resources = [
@@ -17,6 +18,12 @@ export default function Start() {
       url: 'https://appliedsciences.nasa.gov/join-mission/training/english/arset-disaster-assessment-using-synthetic-aperture-radar',
       image:
         'https://appliedsciences.nasa.gov//sites/default/files/styles/banner_min_height/public/2022-07/Website_Header_Small_0.png?itok=lWqrXuuT'
+    },
+    {
+      title: 'Remote Sensing Tutorials',
+      url: 'https://www.nrcan.gc.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/9309',
+      image:
+        'https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/images/earth-sciences/Fundamentals.bmp'
     }
   ]
 
@@ -26,9 +33,9 @@ export default function Start() {
       className="dark:bg-terra-o-black bg-terra-o-white min-h-screen"
     >
       <section className="flex flex-col items-center text-terra-o-black dark:text-terra-o-white">
-        <article>
-          <div className="my-28 flex flex-col justify-center items-center gap-y-10">
-            <h2 className="text-center font-sans font-semibold text-2xl lg:text-5xl 2xl:text-6xl ">
+        <article className="flex flex-col items-center text-center justify-center">
+          <div className="my-28 flex flex-col justify-center items-center max-w-[80vw] gap-y-10">
+            <h2 className=" mt-10 text-center font-sans font-semibold text-2xl lg:text-5xl 2xl:text-6xl ">
               Start your learning journey in
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-50 to-terra-o-green-300">
@@ -37,14 +44,16 @@ export default function Start() {
               - EO
             </h2>
             <p className="text-terra-o-gray-300 w-2/3 text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia
-              magna urna facilisi lacus. Sodales sed elementum nunc sit viverra
-              diam est.
+              Never had contact with this subject before? Don't worry, here you
+              will find a basic guide of what you need to know to start using
+              Earth Observations.
             </p>
           </div>
-          <div className="w-5/6 flex flex-col items-start font-normal text-sm">
-            <h2>1. Types of Earth Observation Imagery</h2>
-            <p>1.1 PASSIVE IMAGERY</p>
+          <div className="w-5/6 max-w-[80vw] text-justify flex flex-col items-start font-normal text-sm">
+            <h2 className="mt-10 text-xl 2xl:text-2xl">
+              1. Types of Earth Observation Imagery
+            </h2>
+            <p className="text-lg">1.1 PASSIVE IMAGERY</p>
             <p>
               In passive imagery systems, sensors are designed to detect
               electromagnetic emissions from constituents of the Earth&apos;s
@@ -62,12 +71,13 @@ export default function Start() {
               alt="Passive Imagery"
               width={782}
               height={426}
+              className="mt-2"
             />
-            <p>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 1: Atmospheric electromagnetic transparency (Source:
               http://commons.wikimedia.org/wiki/File:Atmospheric_electromagnetic_opacity.svg)
-            </p>
-            <h2>1.1.1 Panchromatic</h2>
+            </span>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">1.1.1 Panchromatic</h2>
             <p>
               Panchromatic images are the result of the measure of light
               intensity over a broad range of the electromagnetic spectrum.
@@ -82,6 +92,7 @@ export default function Start() {
               in Figure 2.
             </p>
             <Image
+              className="mt-2"
               src={
                 'https://business.esa.int/sites/business/files/resize/figure2-727x535.png'
               }
@@ -89,7 +100,7 @@ export default function Start() {
               width={727}
               height={535}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 2 (Source:
               http://www.cscrs.itu.edu.tr/assets/downloads/PleiadesUserGuide.pdf)
             </span>
@@ -106,7 +117,9 @@ export default function Start() {
               reflected up to the satellite can only be obtained during the
               daylight hours.
             </p>
-            <h2>.1.2 Multi-spectral</h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl max-w-[80vw]">
+              1.1.2 Multi-spectral
+            </h2>
             <p>
               Multi-spectral imagery denotes the remote sensing of an observed
               scene in several narrow bands of the electromagnetic spectrum.
@@ -133,6 +146,7 @@ export default function Start() {
               appears in darker red on the image.
             </p>
             <Image
+              className="mt-2"
               src={
                 'https://business.esa.int/sites/business/files/resize/figure3-798x278.png'
               }
@@ -140,7 +154,7 @@ export default function Start() {
               width={798}
               height={278}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2  max-w-[80vw]">
               Figure 3: 3-band multi-spectral imagery (Source:
               http://www.cscrs.itu.edu.tr/assets/downloads/PleiadesUserGuide.pdf)
             </span>
@@ -163,7 +177,7 @@ export default function Start() {
                 </li>
               </ul>
             </p>
-            <h2>1.1.3 Pan-sharpened </h2>
+            <h2 className="mt-10 text-lg 2xl:text-xl">1.1.3 Pan-sharpened </h2>
             <p>
               Pan-sharpening is a numerical process that merges multi-spectral
               images with panchromatic images to provide high resolution
@@ -173,6 +187,7 @@ export default function Start() {
               images. This is illustrated in Figure 4.
             </p>
             <Image
+              className="mt-2"
               src={
                 'https://business.esa.int/sites/business/files/resize/figure4-773x212.png'
               }
@@ -180,18 +195,19 @@ export default function Start() {
               width={773}
               height={212}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 4: Example of Pan-Sharpening (Source:
               http://www.cscrs.itu.edu.tr/assets/downloads/PleiadesUserGuide.pdf)
             </span>
-            <h2>1.1.4 Hyper-spectral</h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">1.1.4 Hyper-spectral</h2>
             <Image
+              className="mt-2"
               src={'https://business.esa.int/sites/business/files/figure5.jpg'}
               alt={'Hyper Spectral'}
               width={380}
               height={230}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2  max-w-[80vw]">
               Figure 5: Example of a Hyperspectral Data Product (Source:
               http://www.hyspex.no/hyperspectral_imaging/)
             </span>
@@ -221,12 +237,14 @@ export default function Start() {
             determination of surface emissivity and soil moisture over land, for
             surface energy budget investigations to support atmospheric studies,
             and for ice characterisation.
-            <h2>2.2 ACTIVE IMAGERY </h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">2.2 ACTIVE IMAGERY </h2>
             In active imagery systems, instruments are composed of a transmitter
             that sends out a specific electromagnetic signal and of a sensor
             receiving the interaction of the signal with the Earth’s surface.
             Such observations are not dependent on solar illumination.
-            <h2>2.2.1 Synthetic Aperture Radar </h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">
+              2.2.1 Synthetic Aperture Radar{' '}
+            </h2>
             <p>
               The most common active sensor used for Earth Observation is the
               Synthetic Aperture Radar (SAR). This instrument transmits
@@ -245,6 +263,7 @@ export default function Start() {
               forest monitoring, soil moisture, critical infrastructure, etc.
             </p>
             <Image
+              className="mt-2"
               src={
                 'https://business.esa.int/sites/business/files/resize/figure6-780x505.jpg'
               }
@@ -252,7 +271,7 @@ export default function Start() {
               width={780}
               height={505}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 6: Example of SAR imagery for monitoring formation of
               Icebergs (Source: ESA ENVISAT)
             </span>
@@ -280,7 +299,7 @@ export default function Start() {
               from one and the same flight track but at different times,
               enabling (for instance) the observation of ocean surface currents.
             </p>
-            <h2>2.2.2 Lidar</h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">2.2.2 Lidar</h2>
             <p>
               Lidar (Light Detection And Ranging) EO uses the same principle as
               SAR but works in the IR, visible or UV wavelengths. Lidars are
@@ -292,7 +311,7 @@ export default function Start() {
               at a wavelength of 355 nm and has a high-spectral resolution
               receiver and depolarisation channel.
             </p>
-            <p>
+            <p className="my-4 text-terra-o-gray-400 max-w-[80vw]">
               More information on ATLID can be found at:
               http://download.esa.int/docs/EarthObservation/EarthCARE_instrument_factsheet.pdf.
             </p>
@@ -306,7 +325,9 @@ export default function Start() {
               be the first wind lidar in space to obtain aerosol/cloud optical
               properties (backscatter and extinction coefficients).
             </p>
-            <h2>2.2.3 Radar Altimetry</h2>
+            <h2 className=" mt-10 text-lg 2xl:text-xl">
+              2.2.3 Radar Altimetry
+            </h2>
             <p>
               Radar altimeters are active sensors that use the ranging
               capability of radar to measure the surface topography profile
@@ -333,13 +354,14 @@ export default function Start() {
               alt={'Radar Altimetry'}
               width={400}
               height={400}
+              className="mt-2"
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 7: Altimetry-derived mean dynamic topography (Source:
               http://www.esa.int/spaceinimages/Images/2005/06/Altimetry-derived_mean_dynamic_topography;
               Copyright CLS)
             </span>
-            <h2>2.2.4 GNSS-R</h2>
+            <h2 className="mt-10 text-lg 2xl:text-xl">2.2.4 GNSS-R</h2>
             <p>
               GNSS reflectometry (GNSS-R) is a relatively new category of
               satellite navigation applications which entails a method of remote
@@ -356,6 +378,7 @@ export default function Start() {
               measurements over land.
             </p>
             <Image
+              className="mt-2"
               src={
                 'https://business.esa.int/sites/business/files/Starlab%20GNSS-R%20Sensor%20Oceanpal.png'
               }
@@ -363,12 +386,84 @@ export default function Start() {
               width={520}
               height={389}
             />
-            <span>
+            <span className="text-xs text-terra-o-gray-400 mb-4 mt-2 max-w-[80vw]">
               Figure 8: Starlab GNSS-R Sensor Oceanpal for monitoring lake level
               in ESA Business Applications project INTOGENER.
             </span>
+            <Link
+              href={
+                'https://business.esa.int/newcomers-earth-observation-guide#ref_1'
+              }
+            >
+              <a className=" underline mt-10 mb-20 text-terra-o-terra dark:text-terra-o-gray-200">
+                Content taken from Newcomers Earth Observation Guide
+              </a>
+            </Link>
+            <h2 className="text-2xl mt-10">
+              How Earth observations can help in different scenarios - some
+              examples
+            </h2>
+            <h3 className="mt-10 text-lg">Agriculture</h3>
+            <p className="text-terra-o-terra dark:text-terra-o-gray-200">
+              Agriculture plays a dominant role in economies of both developed
+              and undeveloped countries. Whether agriculture represents a
+              substantial trading industry for an economically strong country or
+              simply sustenance for a hungry, overpopulated one, it plays a
+              significant role in almost every nation. The production of food is
+              important to everyone and producing food in a cost-effective
+              manner is the goal of every farmer, large-scale farm manager and
+              regional agricultural agency. A farmer needs to be informed to be
+              efficient, and that includes having the knowledge and information
+              products to forge a viable strategy for farming operations. These
+              tools will help him understand the health of his crop, extent of
+              infestation or stress damage, or potential yield and soil
+              conditions. Commodity brokers are also very interested in how well
+              farms are producing, as yield (both quantity and quality)
+              estimates for all products control price and worldwide trading.
+            </p>
+            <h3 className="mt-10 text-lg">Forestry</h3>
+            <p className="text-terra-o-terra dark:text-terra-o-gray-200">
+              Monitoring the health of forests is crucial for sustainability and
+              conservation issues. Depletion of key species such as mangrove in
+              environmentally sensitive coastline areas, removal of key support
+              or shade trees from a potential crop tree, or disappearance of a
+              large biota acting as a CO2 reservoir all affect humans and
+              society in a negative way, and more effort is being made to
+              monitor and enforce regulations and plans to protect these areas.
+              <br />
+              International and domestic forestry applications where remote
+              sensing can be utilized include sustainable development,
+              biodiversity, land title and tenure (cadastre), monitoring
+              deforestation, reforestation monitoring and managing, commercial
+              logging operations, shoreline and watershed protection,
+              biophysical monitoring (wildlife habitat assessment), and other
+              environmental concerns.
+            </p>
+            <h3 className="mt-10 text-lg">Land Cover / Biomass Mapping</h3>
+            <p className="text-terra-o-terra dark:text-terra-o-gray-200">
+              Regional land cover mapping is performed by almost anyone who is
+              interested in obtaining an inventory of land resources, to be used
+              as a baseline map for future monitoring and land management.
+              Programs are conducted around the world to observe regional crop
+              conditions as well as investigating climatic change on a regional
+              level through biome monitoring. Biomass mapping provides
+              quantifiable estimates of vegetation cover, and biophysical
+              information such as leaf area index (LAI), net primary
+              productivity (NPP) and total biomass accumulations (TBA)
+              measurements - important parameters for measuring the health of
+              our forests, for example.
+            </p>
+            <Link
+              href={
+                'https://www.nrcan.gc.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/9309'
+              }
+            >
+              <a className=" underline mt-20 text-terra-o-terra dark:text-terra-o-gray-200">
+                Content taken from Remote Sensing Tutorials
+              </a>
+            </Link>
           </div>
-          <div className="flex mx-6 items-start justify-center flex-col">
+          <div className="flex mx-6 my-20 items-start justify-center flex-col">
             <p>Recommended resources</p>
 
             <div className="flex items-center justify-center sm:flex-row flex-col gap-2">

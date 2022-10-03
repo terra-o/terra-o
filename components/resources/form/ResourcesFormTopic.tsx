@@ -17,7 +17,9 @@ export default function ResourcesFormTopic({
     if (topics.includes(title)) {
       setTopics(topics.filter((topic) => topic !== title))
     } else {
-      setTopics([...topics, title])
+      if (topics.length < 2) {
+        setTopics([...topics, title])
+      }
     }
   }
 

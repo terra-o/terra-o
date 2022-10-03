@@ -101,8 +101,7 @@ export default function ResourcesPage({
                   What we found for you
                 </h2>
                 <p className="font-sans font-normal text-terra-o-gray-300 text-md">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquet viverra elit scelerisque sapien ut.
+                  Here is the result of the search based on the filters you chose
                 </p>
               </div>
             </div>
@@ -168,9 +167,7 @@ export default function ResourcesPage({
                     us
                   </h3>
                   <p className="text-md max-w-md text-terra-o-gray-300 ">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lacinia magna urna facilisi lacus. Sodales sed elementum
-                    nunc sit viverra diam est.
+                  Is there another resource that is not listed on this site? Send it directly to us, so with your help we can get more quality content for our users
                   </p>
                 </div>
                 <form
