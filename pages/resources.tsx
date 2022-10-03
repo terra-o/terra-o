@@ -17,9 +17,24 @@ type ResourcesProps = {
 }
 
 export default function Resources({
-  query: { types, topics, where }
+  query: { types, topics, where, difficulty, language }
 }: ResourcesProps) {
-  if (!types && !topics && !where) return <ResourcesForm />
+  if (
+    !types ||
+    !topics ||
+    ((topics as string)?.split(',').includes('trainings') && !where) ||
+    !difficulty ||
+    !language
+  )
+    return <ResourcesForm />
 
-  return <ResourcesPage types={types!!} topics={topics!!} where={where!!} />
+  return (
+    <ResourcesPage
+      types={types!! as string}
+      topics={topics!! as string}
+      where={where!! as string}
+      difficulty={difficulty!! as string}
+      language={language!! as string}
+    />
+  )
 }

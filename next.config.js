@@ -4,6 +4,10 @@ module.exports = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['appliedsciences.nasa.gov']
+    domains: [
+      'appliedsciences.nasa.gov',
+      'business.esa.int',
+      'eo4society.esa.int'
+    ]
   }
 }

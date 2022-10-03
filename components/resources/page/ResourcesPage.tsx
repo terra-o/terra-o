@@ -1,31 +1,75 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { CgSpinner } from 'react-icons/cg'
 
 import Page from '@/components/layout/Page'
 import { useTheme } from 'next-themes'
-import { ResultExternalResource } from '../ResultExternalResource'
-import { ResultExternalTraining } from '@/components/training/ResultExternalTraining'
+import ResultExternalEntry from '@/components/resources/ResultExternalEntry'
+import ResultExternalTraining from '@/components/resources/ResultExternalTraining'
 
 type ResourcesPageProps = {
-  types: string[] | string
-  topics: string[] | string
-  where: string[] | string
+  types: string
+  topics: string
+  where: string
+  difficulty: string
+  language: string
+}
+
+interface Entry {
+  title: string
+  description: string
+  url: string
+  image: string
+  topic: string
+}
+
+interface Training {
+  title: string
+  image: string
+  url: string
+  type: string
+  date: string
+  level: string
+  topic: string
 }
 
 export default function ResourcesPage({
   types,
   topics,
-  where
+  where,
+  difficulty,
+  language
 }: ResourcesPageProps) {
   const [loading, setLoading] = useState(true)
+  const [entries, setEntries] = useState<Entry[]>([])
+  const [trainings, setTrainings] = useState<Training[]>([])
 
   const { theme } = useTheme()
 
   useEffect(() => {
-    // fetch data from API
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
+    async function getResources() {
+      try {
+        const { data } = await axios.get(
+          `https://terra-o-core.herokuapp.com/resources?types=${types}&topics=${topics}&where=${where}&difficulty=${difficulty}&language=${language}`
+        )
+
+        data.entries.forEach((entry: Entry) => {
+          if (!entries.some((e) => e.title === entry.title)) {
+            setEntries((entries) => [...entries, entry])
+          }
+        })
+
+        data.trainings.forEach((training: Training) => {
+          if (!trainings.some((e) => e.title === training.title)) {
+            setTrainings((trainings) => [...trainings, training])
+          }
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    getResources()
   }, [])
 
   return (
@@ -36,13 +80,17 @@ export default function ResourcesPage({
     >
       <section className=" overflow-hidden flex flex-col items-center justify-center text-terra-o-white  dark:text-terra-o-black">
         {loading ? (
-          <div className="flex h-[52.5vh] flex-col items-center text-terra-o-white dark:text-terra-o-black justify-center gap-y-6">
+          <div className="flex h-[92.5vh] flex-col items-center text-terra-o-white dark:text-terra-o-black justify-center gap-y-6">
             <CgSpinner fontSize={52} className="animate-spin -mt-20" />
-            <p className="text-4xl font-bold">
+            <h2 className="text-4xl font-bold">
               Getting{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-terra-o-blue-200 to-terra-o-green-200">
                 resources
               </span>
+            </h2>
+            <p className="text-center text-lg px-4 max-w-[28rem] text-terra-o-gray-200 dark:text-terra-o-gray-400">
+              This might take a few seconds or minutes depending on the chosen
+              parameters
             </p>
           </div>
         ) : (
@@ -63,27 +111,25 @@ export default function ResourcesPage({
                 {types.includes('entries') && (
                   <div className="flex flex-col items-start dark:text-terra-o-white text-terra-o-black gap-y-10">
                     <p className="text-lg 2xl:text-2xl font-bold">Entries</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-4">
-                      {Array.from({ length: 4 }).map((_, i) => (
-                        <ResultExternalResource
-                          topic={'Disasters'}
-                          name={'Resource Name'}
-                          key={i}
-                          description={
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia' +
-                            'magna urna facilisi lacus. Sodales sed elementum nunc sit viverra' +
-                            'diam est.'
-                          }
-                          image={
-                            'https://appliedsciences.nasa.gov//sites/default/files/styles/banner_min_height/public/2022-07/Website_Header_Small_0.png?itok=lWqrXuuT'
-                          }
-                          url={
-                            'https://appliedsciences.nasa.gov/join-mission/training/english/arset-disaster-assessment-using-synthetic-aperture-radar'
-                          }
-                          provider={'Applied Sciences'}
-                        />
-                      ))}
-                    </div>
+                    {entries.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-4">
+                        {entries.map((entry, i) => (
+                          <ResultExternalEntry
+                            key={i}
+                            topic={entry.topic}
+                            name={entry.title}
+                            description={entry.description}
+                            image={entry.image}
+                            url={entry.url}
+                            provider={'European Space Agency'}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-lg -mt-8 2xl:text-xl font-bold text-terra-o-gray-300 dark:text-terra-o-gray-200">
+                        No entries were found
+                      </p>
+                    )}
                   </div>
                 )}
                 {types.includes('trainings') && (
@@ -91,21 +137,25 @@ export default function ResourcesPage({
                     <p className="text-lg 2xl:text-2xl font-bold">
                       Training programs
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 sm:gap-x-20 gap-y-4">
-                      {Array.from({ length: 4 }).map((_, i) => (
-                        <ResultExternalTraining
-                          topic={'Disasters'}
-                          name={'Resource Name'}
-                          key={i}
-                          type={'online'}
-                          level={'difficult(?)'}
-                          date={new Date()}
-                          url={
-                            'https://appliedsciences.nasa.gov/join-mission/training/english/arset-disaster-assessment-using-synthetic-aperture-radar'
-                          }
-                        />
-                      ))}
-                    </div>
+                    {trainings.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 sm:gap-x-20 gap-y-4">
+                        {trainings.map((training, i) => (
+                          <ResultExternalTraining
+                            key={i}
+                            topic={training.topic}
+                            name={training.title}
+                            type={training.type}
+                            level={training.level}
+                            date={training.date}
+                            url={training.url}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-lg -mt-8 2xl:text-xl font-bold text-terra-o-gray-300 dark:text-terra-o-gray-200">
+                        No training programs were found
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
